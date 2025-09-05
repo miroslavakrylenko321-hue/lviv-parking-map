@@ -70,8 +70,25 @@
 
     L.marker([49.8315, 24.0280]).addTo(map)
       .bindPopup("Парковка біля Привокзальної 🚉");
-  </script>
+  </script> 
+function showMyLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+      L.marker([lat, lon]).addTo(map)
+        .bindPopup("Ви тут 📍").openPopup();
+      map.setView([lat, lon], 15);
+    });
+  } else {
+    alert("Ваш браузер не підтримує геолокацію 😔");
+  }
+}
 </body>
+<button onclick="showMyLocation()" 
+        style="position:absolute; top:10px; right:10px; z-index:1000;">
+  📍 Показати мене
+</button>
 </html>
 </body>
 </html>
