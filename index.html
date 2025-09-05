@@ -1,1 +1,35 @@
-index.html
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Карта парковок Львова</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Карта парковок Львова</h2>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Створюємо карту
+    var map = L.map('map').setView([49.8397, 24.0297], 13);
+
+    // Додаємо OpenStreetMap шари
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Приклад маркера (пізніше можна додати парковки)
+    L.marker([49.8397, 24.0297]).addTo(map)
+      .bindPopup('Центр Львова 🏙️');
+  </script>
+</body>
+</html>
